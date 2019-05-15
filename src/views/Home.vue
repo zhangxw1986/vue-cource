@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/img/logo.png">
+    <p>{{$route.params.username}}</p>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到parent</button>
@@ -19,7 +20,9 @@ export default {
   },
   methods: {
     handleClick(type) {
-      // this.$router.go(-1)
+      // 变成式导航-JS代码内部跳转:this.$router.push('/xxx')
+      // this.$router.go(-1)等同于history.back()
+      // this.$router.go(1)等同于history.forward()
       if (type === "back") this.$router.back();
       // else if (type === "push") this.$router.push("parent");
       else if (type === "push") this.$router.push({

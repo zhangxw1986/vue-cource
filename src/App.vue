@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- 封装了a标签，用于跳转 -->
-      <router-link :to="{name:'home'}">Home</router-link> |
+      <!-- router-link标签跳转：封装了a标签，用于跳转，to:导航路径，可以直接写路径或者写对象的方式 -->
+      <router-link :to="{name:'home',params:{'username':'zxw'}}">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <!-- 视图渲染组件，通过router-link加载的组件会在这里渲染 -->

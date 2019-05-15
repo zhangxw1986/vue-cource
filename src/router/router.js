@@ -1,3 +1,4 @@
+// 引入HOME页面组件
 import Home from '@/views/Home.vue'
 
 export default [
@@ -16,22 +17,24 @@ export default [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
+    // 以下方式让懒加载
     component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
   },
-  // 动态路由匹配
+  // 动态路由匹配,即在url中传递参数
   {
     path: '/argu/:name',
     name: 'argu',
     component: () => import('@/views/argu.vue')
   },
-  // 嵌套路由渲染
+  // 子路由，也叫嵌套路由，在children后跟路由数组来实现，数组里和其他配置路由基本相同，
+  // 然后增加<router-view></router-view>来显示子页面，相当于嵌入iframe
   {
-    path: '/parent',
+    path: '/parent', // 主页路由
     name: 'parent',
     component: () => import('@/views/parent.vue'),
-    children: [
+    children: [ // 嵌套子路由
       {
-        path: 'child',
+        path: 'child', // 子页面
         component: () => import('@/views/child.vue')
       }
     ]
@@ -47,7 +50,7 @@ export default [
   },
   // 重定向
   {
-    path: '/main',
+    path: '/home',
     redirect: to => '/'
   }
 

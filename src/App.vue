@@ -1,10 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <!-- 封装了a标签，用于跳转 -->
+      <router-link :to="{name:'home'}">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <!-- 视图渲染组件，通过router-link加载的组件会在这里渲染 -->
+    <!-- 命名视图相关 -->
     <router-view/>
+    <router-view name="email"/>
+    <router-view name="phone"/>
+
   </div>
 </template>
 

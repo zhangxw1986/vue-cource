@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <p>{{food}}</p>
     <img alt="Vue logo" src="../assets/img/logo.png">
     <p>{{$route.params.username}}</p>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -18,6 +19,24 @@ export default {
   components: {
     HelloWorld
   },
+  props: {
+    food: {
+      type: String,
+      default: 'apple'
+    }
+  },
+  //组件内守卫有3个：beforeRouterEnter、beforeRouterLeave、beforeRouterUpdate，后两个可以使用this对象表示组件，第一个不可以
+  beforeRouteEnter (to, from, next) {
+    next(vm => {  // 采用回调函数的方式使用组件对象
+      console.log(vm)
+    })
+  },
+  beforeRouteLeave (to, from, next) {
+    const leave = confirm('你真的确定要离开吗？')
+    if(leave) next()
+    else next(false)
+  },
+
   methods: {
     handleClick(type) {
       // 变成式导航-JS代码内部跳转:this.$router.push('/xxx')
@@ -39,5 +58,5 @@ export default {
     })
     }
   }
-};
+}
 </script>

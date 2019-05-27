@@ -14,6 +14,6 @@ module.exports = {
   // 打包时减少打包体积
   productionSourceMap: false,
   devServer: {
-    proxy: 'http://localhost:4000'
+    // proxy: 'http://localhost:4000'
   }
 }

@@ -7,14 +7,36 @@
     </div>
     <!-- 视图渲染组件，通过router-link加载的组件会在这里渲染 -->
     <!-- 命名视图相关 -->
-    <router-view/>
-    <router-view name="email"/>
-    <router-view name="phone"/>
+    <!-- transition-group设置组件动效 -->
+    <transition-group name='router'>
+    <router-view key='default'/>
+    <router-view key='email' name="email"/>
+    <router-view key='phone' name="phone"/>
+    </transition-group>
+
 
   </div>
 </template>
 
 <style lang="less">
+.router-enter{
+  opacity: 0;
+}
+.router-enter-active{
+  transition: opacity 1s ease;
+}
+.router-enter-to{
+  opacity: 1
+}
+.router-leave{
+  opacity: 1;
+}
+.router-leave-active{
+  transition: opacity 1s ease;
+}
+.router-leave-to{
+  opacity: 0
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

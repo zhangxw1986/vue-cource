@@ -77,6 +77,10 @@ export default [
     redirect: to => '/'
   },
   {
+    path: '/store',
+    component: () => import('@/views/store.vue')
+  },
+  {
     path: '*', // 设置404错误页面
     component: () => import('@/views/404_page.vue')
   }

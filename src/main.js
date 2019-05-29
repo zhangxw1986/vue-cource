@@ -6,9 +6,11 @@ import App from './App.vue'
 import router from './router'
 // 引入vuex存储组件
 import store from './store'
+import Bus from './lib/bus'
 
 // 关闭生产模式下给出的提示
 Vue.config.productionTip = false
+Vue.prototype.$bus = Bus
 
 // 定义实例
 new Vue({
